@@ -17,9 +17,7 @@ const container = {
  * @param {Function} func 测试方法
  */
 function test(name, func) {
-
    container.default.push({ name, func });
-
 }
 
 /**
@@ -28,9 +26,7 @@ function test(name, func) {
  * @param {Function} func 测试方法
  */
 test.skip = function (name, func) {
-
    container.skip.push({ name, func });
-
 }
 
 /**
@@ -39,9 +35,7 @@ test.skip = function (name, func) {
  * @param {Function} func 测试方法
  */
 test.before = function (name, func) {
-
    container.before.push({ name, func });
-
 }
 
 /**
@@ -50,21 +44,17 @@ test.before = function (name, func) {
  * @param {Function} func 测试方法
  */
 test.after = function (name, func) {
-
    container.after.push({ name, func });
-
 }
 
 /**
  * 初始化容器
  */
 test.init = function () {
-
    container.before.splice(0);
    container.default.splice(0);
    container.after.splice(0);
    container.skip.splice(0);
-
 }
 
 test.container = container;

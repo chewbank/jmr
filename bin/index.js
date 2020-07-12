@@ -20,7 +20,7 @@ try {
 
 } catch (error) {
 
-  const injection = fs.readFileSync('./bin/@jmr.js', 'utf8');
+  const injection = fs.readFileSync(`${__dirname}/@jmr.js`, 'utf8');
 
   fs.mkdirSync(path.join(cwd, 'node_modules'), { recursive: true });
 
@@ -34,12 +34,16 @@ if (version !== '0.0.2') {
   throw new Error(`版本不一致`);
 }
 
+try {
+  require(`${cwd}/jmr.config.js`);
+} catch (error) {
+
+}
+
 async function main() {
 
-  try {
-    require(`${cwd}/test/before.js`);
-  } catch (error) {
-
+  if (argv.default.length === 0) {
+    argv.default.push('./test/');
   }
 
   for (const item of argv.default) {

@@ -1,6 +1,6 @@
 {
    "name": "jmr",
-   "version": "0.0.2",
+   "version": "0.0.3",
    "description": "JS轻量级测试工具",
    "bin": "./bin/index.js",
    "main": "./bin/index.js",

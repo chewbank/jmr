@@ -5,7 +5,7 @@ const consoln = require('./console.js');
 
 module.exports = async function (fullPath, queue) {
 
-   console.log(`\n\x1b[32m${fullPath}\x1b[30m`);
+   console.log(`\n\x1b[34m${fullPath}\x1b[30m`);
    
    for (const item of queue) {
 
