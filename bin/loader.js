@@ -12,6 +12,10 @@ module.exports = async function loader(fullPath, container) {
 
   } catch (error) {
 
+    // if (error.code === 'MODULE_NOT_FOUND') {
+    //   throw error;
+    // }
+    
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {

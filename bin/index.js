@@ -37,7 +37,9 @@ if (version !== '0.0.2') {
 try {
   require(`${cwd}/jmr.config.js`);
 } catch (error) {
-
+  if (error.code === 'MODULE_NOT_FOUND') {
+    throw error;
+  }
 }
 
 async function main() {

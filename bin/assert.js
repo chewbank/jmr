@@ -6,10 +6,14 @@ const assert = require('assert').strict
 const assertBox = {};
 
 for (const name in assert) {
+
    assertBox[name] = function (...arvg) {
-      assert[name](...arvg)
-      this.state = true
+
+      assert[name](...arvg);
+      this.state = true;
+      
    }
+
 }
 
 module.exports = assertBox;
