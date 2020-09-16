@@ -37,7 +37,7 @@ module.exports = async function loader(fullPath, container) {
       
     } else {
 
-      throw new Error(`模块路径无效`);
+      throw new Error(`${fullPath},${error}`);
 
     }
 

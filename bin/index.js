@@ -30,14 +30,14 @@ try {
 
 const { version, container, init } = require(jmrPath);
 
-if (version !== '0.0.2') {
+if (version !== '0.0.5') {
   throw new Error(`版本不一致`);
 }
 
 try {
   require(`${cwd}/jmr.config.js`);
 } catch (error) {
-  if (error.code === 'MODULE_NOT_FOUND') {
+  if (error.code !== 'MODULE_NOT_FOUND') {
     throw error;
   }
 }
