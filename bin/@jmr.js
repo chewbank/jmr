@@ -59,6 +59,6 @@ test.init = function () {
 
 test.container = container;
 
-test.version = "0.0.4";
+test.version = "0.0.7";
 
 module.exports = test;

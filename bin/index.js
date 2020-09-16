@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const packageJson = require('../package.json');
 const argv = require('./argv.js');
 const getDate = require('./date.js');
 const loader = require('./loader.js');
@@ -11,27 +12,33 @@ const run = require('./run.js');
 console.log(`\n\x1b[30m»»»»»»»»»»»»»»» ${getDate()} «««««««««««««««`);
 
 const cwd = process.cwd();
-
-const jmrPath = path.join(cwd, 'node_modules', 'jmr.js');
+const codePath = path.join(__dirname, '@jmr.js');
+const injectionPath = path.join(cwd, 'node_modules', 'jmr.js');
 
 try {
 
-  fs.accessSync(jmrPath);
+  fs.accessSync(injectionPath);
 
 } catch (error) {
 
-  const injection = fs.readFileSync(`${__dirname}/@jmr.js`, 'utf8');
+  const code = fs.readFileSync(codePath, 'utf8');
 
   fs.mkdirSync(path.join(cwd, 'node_modules'), { recursive: true });
 
-  fs.writeFileSync(jmrPath, injection);
+  fs.writeFileSync(injectionPath, code);
 
 }
 
-const { version, container, init } = require(jmrPath);
+const { version, container, init } = require(injectionPath);
 
-if (version !== '0.0.5') {
-  throw new Error(`版本不一致`);
+if (version !== packageJson.version) {
+
+  const code = fs.readFileSync(codePath, 'utf8');
+
+  fs.writeFileSync(injectionPath, code);
+
+  throw new Error(`jmr版本与注入依赖版本不一致`);
+
 }
 
 try {

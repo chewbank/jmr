@@ -4,7 +4,7 @@ const test = require('jmr');
 
 const { container } = test;
 
-// console.log(test);
+// console.log(666);
 
 test.xxx = function () {
 
