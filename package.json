@@ -1,5 +1,5 @@
 {
-   "name": "jmr",
+   "name": "@chewbank/jmr",
    "version": "0.0.7",
    "description": "JS轻量级测试工具",
    "bin": "./bin/index.js",
